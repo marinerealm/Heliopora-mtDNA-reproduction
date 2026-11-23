@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use these data or code, please cite them as below, together with the associated article."
+title: "Supplementary Data S1: raw qPCR data, metadata and analysis code for 'Mitochondrial DNA integrity and gene expression across the brooding period and among subclades of the Heliopora species complex'"
+type: dataset
+authors:
+  - family-names: Shimpi
+    given-names: Gaurav G.
+    orcid: "https://orcid.org/0000-0003-1289-3021"
+    affiliation: "Department of Ecosystem Studies, Graduate School of Agricultural and Life Sciences, The University of Tokyo"
+  - family-names: Yasuda
+    given-names: Nina
+    orcid: "https://orcid.org/0000-0002-9416-7754"
+    affiliation: "Department of Ecosystem Studies, Graduate School of Agricultural and Life Sciences, The University of Tokyo"
+doi: 10.5281/zenodo.24457821
+repository-code: "https://github.com/marinerealm/Heliopora-mtDNA-reproduction"
+license:
+  - MIT
+  - CC-BY-4.0
+keywords:
+  - Heliopora coerulea
+  - blue coral
+  - mitochondrial DNA damage
+  - mtDNA copy number
+  - qPCR
+  - coral reproduction
