@@ -1,0 +1,11 @@
+{
+  "title": "Supplementary Data S1: raw qPCR data, metadata and analysis code for 'Mitochondrial DNA integrity and gene expression across the brooding period and among subclades of the Heliopora species complex'",
+  "upload_type": "dataset",
+  "description": "Raw qPCR instrument files (.eds) and exports, LinRegPCR files, sample metadata and Python scripts that reproduce all results, tables and figures of the article by Shimpi and Yasuda, submitted to the Journal of the Marine Biological Association of the United Kingdom. Code is released under the MIT licence and data under CC BY 4.0 (see LICENSE).",
+  "creators": [
+    {"name": "Shimpi, Gaurav G.", "orcid": "0000-0003-1289-3021", "affiliation": "The University of Tokyo"},
+    {"name": "Yasuda, Nina", "orcid": "0000-0002-9416-7754", "affiliation": "The University of Tokyo"}
+  ],
+  "license": "cc-by-4.0",
+  "keywords": ["Heliopora coerulea", "blue coral", "mitochondrial DNA damage", "mtDNA copy number", "qPCR", "coral reproduction"]
+}

@@ -20,7 +20,7 @@ See `LICENSE`. Code: https://github.com/marinerealm/Heliopora-mtDNA-reproduction
 Supplementary_Data_S1/
 ├── README.md                    this guide
 ├── LICENSE                      MIT (code) and CC BY 4.0 (data and results)
-├── CITATION.cff                 citation metadata (read by GitHub and Zenodo)
+├── .zenodo.json                 citation metadata for Zenodo (authors, licence, keywords)
 ├── requirements.txt             Python packages
 ├── run_all.py                   runs steps 1-9 in order
 ├── data/
