@@ -1,12 +1,26 @@
 # Supplementary Data S1 — raw qPCR data, metadata and analysis code
 
-This folder reproduces, from the original instrument files, every number, table and figure in the manuscript
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24457821.svg)](https://doi.org/10.5281/zenodo.24457821)
+
+This repository reproduces, from the original instrument files, every number, table and figure in the manuscript
 *Mitochondrial DNA integrity and gene expression across the brooding period and among subclades of the Heliopora
-species complex*.
+species complex* by Gaurav G. Shimpi and Nina Yasuda (Department of Ecosystem Studies, The University of Tokyo),
+submitted to the Journal of the Marine Biological Association of the United Kingdom.
+
+**How to cite.** Shimpi GG and Yasuda N (2026) Supplementary Data S1: raw qPCR data, metadata and analysis code
+for "Mitochondrial DNA integrity and gene expression across the brooding period and among subclades of the
+Heliopora species complex". Zenodo. https://doi.org/10.5281/zenodo.24457821. Please also cite the article.
+
+**Licence.** Code (`run_all.py`, `scripts/`, `figure1_map/`): MIT. Data and results (`data/`, `results/`): CC BY 4.0.
+See `LICENSE`. Code: https://github.com/marinerealm/Heliopora-mtDNA-reproduction
+
+**Contact.** Gaurav G. Shimpi (shimpig@g.ecc.u-tokyo.ac.jp)
 
 ```
 Supplementary_Data_S1/
 ├── README.md                    this guide
+├── LICENSE                      MIT (code) and CC BY 4.0 (data and results)
+├── CITATION.cff                 citation metadata (read by GitHub and Zenodo)
 ├── requirements.txt             Python packages
 ├── run_all.py                   runs steps 1-9 in order
 ├── data/
@@ -15,9 +29,10 @@ Supplementary_Data_S1/
 │       ├── gene_expression/     LinRegPCR outputs of the two cDNA plates; plate map; eds/ (original run files)
 │       ├── mtDNA/               SRP54, short COI and long COI plates (instrument exports, raw curves, LinRegPCR); eds/
 │       ├── mtDNA_KR_replicate_20180314/   independent repeat run (KR colonies; ACTB, SRP54, short and long COI); eds/
-│       └── sample_records/      primer list; mtDNA sample sheet (DNA concentrations and dilutions)
+│       └── sample_records/      mtDNA sample sheet (DNA concentrations and dilutions; plate layouts)
 ├── scripts/                     qpcr_lib.py (shared functions) + steps 01-09
-└── results/                     created by run_all.py (tables .csv, figures .svg/.png, SUMMARY.md, all_results.xlsx)
+├── figure1_map/                 make_fig1_sites_aerial.py: Figure 1 (sampling-site map); run separately
+└── results/                     created when you run run_all.py (not included here; tables, figures, SUMMARY.md)
 ```
 
 ## 1. Quick start
@@ -27,8 +42,9 @@ pip install -r requirements.txt
 python run_all.py
 ```
 
-Then open `results/SUMMARY.md`. The figures are `results/Fig1_expression.svg`, `results/Fig2_mtDNA.svg` and
-`results/FigS1_copy_number_vs_damage.svg` (Supplementary Figure S1).
+Then open `results/SUMMARY.md`. The figures are `results/Fig2_expression.svg` (Figure 2), `results/Fig3_mtDNA.svg`
+(Figure 3) and `results/FigS1_copy_number_vs_damage.svg` (Supplementary Figure S1). Figure 1 (the site map) is made
+by `figure1_map/make_fig1_sites_aerial.py` (see "Figure 1" in section 5).
 The run takes about one minute (tested with Python 3.13 and the package versions in `requirements.txt`).
 
 ## 2. Names used
@@ -129,14 +145,15 @@ Steps 8 and 9 run later and add their own sections and sheets to these two files
 
 ### Step 6 — Supplementary tables (`scripts/06_supplementary_tables.py`)
 
-Writes `results/Supplementary_Tables_S1_S2.xlsx`: Table S1 (primers from `sample_records/Primers.xlsx`, with the
-efficiencies measured here) and Table S2 (per-colony values for the exploratory groups).
+Writes `results/Supplementary_Tables_S1_S2.xlsx`: Table S1 (primer pairs, sequences and amplicon lengths, which are
+listed in the script, and the efficiencies measured here) and Table S2 (per-colony values for the exploratory groups).
 
 ### Step 7 — Figures (`scripts/07_figures.py`)
 
-Draws Figures 1 and 2 from the result tables of steps 1, 3 and 4 (no new statistics). Each colony is a point and bars
-are group means; effect-size panels show differences with 95 % CI. Fig. 1A marks sex (filled = female, open = male);
-Fig. 1B lists p and Benjamini-Hochberg q; Fig. 2B shows the KR repeat run next to the main KR estimate.
+Draws Figures 2 (`Fig2_expression`) and 3 (`Fig3_mtDNA`) from the result tables of steps 1, 3 and 4 (no new
+statistics). Each colony is a point and bars are group means; effect-size panels show differences with 95 % CI.
+Fig. 2A marks sex (filled = female, open = male); Fig. 2B lists p and Benjamini-Hochberg q; Fig. 3B shows the KR
+repeat run next to the main KR estimate.
 Black, bold and * = p < 0.05; grey = p ≥ 0.05. Confidence intervals of the repeat run are in `07_kr_replicate_welch_ci.csv`.
 
 ### Step 8 — Copy number v damage (`scripts/08_copy_number_vs_damage.py`)
@@ -168,6 +185,13 @@ Uses the per-colony values of step 3 (`03_mtdna_per_colony.csv`); no new measure
    values per colony), `FigS1_copy_number_vs_damage.svg/.png`; a "Step 8" section is added to `SUMMARY.md` and two
    sheets to `all_results.xlsx` (running step 8 again replaces them, it does not duplicate them).
 
+**Supplementary Figure S1** (`FigS1_copy_number_vs_damage`). Association of estimated mtDNA damage with SRP54
+quantity (A) and short-COI quantity (B) per DNA input among colonies. Values are differences from the mean of each
+sampling group (2014: site × period; 2017: subclade; nine groups of three colonies); damage in lesions per 10 kb.
+Pearson r tested with df = n − 10 (null hypothesis: no association); permutation p from shuffling values within
+groups (20,000 permutations). n = 26 for SRP54 (SHC701 excluded) and 27 for short COI. Plotting code was prepared
+with assistance from Claude (Anthropic); the authors checked the figure.
+
 ### Step 9 — coe.3 in 2014 and 2017 (`scripts/09_coe3_2014_vs_2017.py`)
 
 Question: did coe.3 colonies sampled outside the brooding period give similar damage and copy number in 2014 and 2017,
@@ -192,6 +216,21 @@ All colonies of both years were amplified on the same plate for each assay, so t
    between years.
 7. **Outputs.** `09_coe3_2014_vs_2017_tests.csv`, `09_coe3_group_means.csv`, `09_coe3_group_mean_spread.csv`; a
    "Step 9" section in `SUMMARY.md` and three sheets in `all_results.xlsx`.
+
+### Figure 1 — site map (`figure1_map/make_fig1_sites_aerial.py`)
+
+Not part of `run_all.py`, because it downloads map data and needs `geopandas`. Run it from the `figure1_map` folder:
+
+```
+pip install geopandas pillow matplotlib
+python make_fig1_sites_aerial.py
+```
+
+It writes `Fig1_sampling_sites/` (SVG, PDF, 600 dpi TIFF and PNG) next to the script. Sources: panel A, Natural
+Earth 1:10m land (public domain); panel B, National Land Numerical Information, Administrative Areas N03 (MLIT,
+Japan); panel C, GSI seamless aerial photographs (Geospatial Information Authority of Japan). Site positions: KR, YKS
+and YIS from the 13 July 2014 field sheets; 2017 panel at the settlement-plate site on the western side of the Yonara
+Channel (24°21.991′ N, 123°57.035′ E).
 
 ## 6. How to change something
 

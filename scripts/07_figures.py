@@ -1,7 +1,7 @@
 """STEP 7 - Manuscript figures (brooding terminology; subclades sp.3, sp.2, coe.3 = historical HC-A, HC-A', HC-B), drawn from the result tables of steps 1, 3 and 4.
-Fig1_expression: wider panel A, colonies dodged, sex marked (filled = female, open = male), SOD bracket,
+Fig2_expression: wider panel A, colonies dodged, sex marked (filled = female, open = male), SOD bracket,
     panel B with p and Benjamini-Hochberg q columns.
-Fig2_mtDNA: dot plots with p above each comparison (as in the original Fig. 2), plus effect-size panels
+Fig3_mtDNA: dot plots with p above each comparison (as in the earlier draft figure), plus effect-size panels
     (difference, 95% CI) including the KR repeat run (14 Mar 2018) and the 2017 subclade contrasts.
 Significance: * = unadjusted p < 0.05 (bold); grey = p >= 0.05. Run after steps 1-4."""
 import numpy as np
@@ -60,7 +60,7 @@ def forest(ax, rows, xlabel, xlim, extra=None):
     ax.set_xlabel(xlabel); ax.spines[["top", "right", "left"]].set_visible(False)
 
 
-# ================================================================ Figure 1 v3
+# ================================================================ Figure 2 (gene expression)
 N = pd.read_csv(RES / "01_expression_per_colony_log2NRQ.csv").set_index("label")
 main = pd.read_csv(RES / "01_expression_main.csv").set_index("gene").loc[TARGETS]
 fig = plt.figure(figsize=(7.2, 3.7))
@@ -92,9 +92,9 @@ forest(b, rows, "log$_2$ fold change,\nduring vs before (95% CI)", (-3.0, 2.2),
        extra={g: f"{q:.2f}" for g, q in main.q_BH.items()})
 b.set_xticks([-2, -1, 0, 1, 2])
 fig.text(.012, .95, "A", fontweight="bold", fontsize=9); fig.text(.662, .95, "B", fontweight="bold", fontsize=9)
-fig.savefig(OUT / "Fig1_expression.svg"); fig.savefig(OUT / "Fig1_expression.png", dpi=300)
+fig.savefig(OUT / "Fig2_expression.svg"); fig.savefig(OUT / "Fig2_expression.png", dpi=300)
 
-# ================================================================ Figure 2 v3
+# ================================================================ Figure 3 (mtDNA copy number and damage)
 T = pd.read_csv(RES / "03_mtdna_per_colony.csv").set_index("sample")
 R = pd.read_csv(RES / "03_mtdna_tests.csv")
 Q = lambda an, ct, me: R[(R.analysis == an) & (R.contrast == ct) & (R.measure == me)].iloc[0]
@@ -174,9 +174,9 @@ forest(E, dm_rows, "Difference in lesions\nper 10 kb (95% CI)", (-20, 27))
 for (bot, hgt), labs in zip(ROWS, ["ABC", "DEF"]):
     for x, lab in zip([.01, .405, .80], labs):
         fig.text(x, bot + hgt + .05, lab, fontweight="bold", fontsize=9)
-fig.savefig(OUT / "Fig2_mtDNA.svg"); fig.savefig(OUT / "Fig2_mtDNA.png", dpi=300)
+fig.savefig(OUT / "Fig3_mtDNA.svg"); fig.savefig(OUT / "Fig3_mtDNA.png", dpi=300)
 # name Arial first in every SVG text element (Liberation Sans, metric-compatible, is the fallback used to draw them)
-for f in ("Fig1_expression.svg", "Fig2_mtDNA.svg"):
+for f in ("Fig2_expression.svg", "Fig3_mtDNA.svg"):
     fp = OUT / f
     fp.write_text(fp.read_text().replace("font-family: 'Liberation Sans'", "font-family: 'Arial', 'Liberation Sans'"))
-print("STEP 7 done: Fig1_expression and Fig2_mtDNA (.svg editable, .png preview)")
+print("STEP 7 done: Fig2_expression and Fig3_mtDNA (.svg editable, .png preview)")

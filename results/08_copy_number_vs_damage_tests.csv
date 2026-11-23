@@ -1,4 +1,0 @@
-measure,compared_with,n_colonies,n_groups,pearson_r,df,p,p_permutation,spearman_rho,r_leave_one_group_out_min,r_leave_one_group_out_max
-SRP54 per DNA input,estimated mtDNA damage,26,9,-0.6618,16,0.0028,0.0391,-0.5002,-0.7778,-0.4535
-short COI per DNA input,estimated mtDNA damage,27,9,0.0453,17,0.8539,0.7891,-0.0763,-0.0718,0.1372
-SRP54-normalised copy number,estimated mtDNA damage,26,9,0.6041,16,0.0079,0.0345,0.4838,0.4066,0.7283

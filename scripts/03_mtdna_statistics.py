@@ -1,4 +1,4 @@
-"""STEP 3 - mtDNA copy number and damage: colony values and tests (Figure 2 is drawn by 07_figures.py).
+"""STEP 3 - mtDNA copy number and damage: colony values and tests (Figure 3 is drawn by 07_figures.py).
 
 Colony value = mean of duplicate wells on the log2 scale.
   log2 mtCN (SRP54-normalised) = log2N0(COI-small) - log2N0(SRP54)          [relative values only]
@@ -142,7 +142,7 @@ G = T.groupby(["analysis_group", "site_code", "lineage", "repro_state"]).agg(
     lesions_min=("lesions_poisson_vs_B2014_before", "min"), lesions_max=("lesions_poisson_vs_B2014_before", "max"))
 G.round(3).to_csv(RES / "03_group_summary.csv")
 
-# Figure 2 is drawn by 07_figures.py
+# Figure 3 is drawn by 07_figures.py
 
 print("STEP 3 done. Key tests:")
 key = R[R.measure.isin(["mtCN", "COIs_per_input", "lesions_poisson"])]

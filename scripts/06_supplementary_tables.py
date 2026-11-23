@@ -7,32 +7,43 @@ from openpyxl.utils import get_column_letter
 from qpcr_lib import RAW, META, RES
 
 # ------------------------------------------------------------------ Table S1: primers
-pr = pd.read_excel(RAW / "sample_records" / "Primers.xlsx", header=0)
-pr.columns = ["n", "primer", "sequence", "gene_name", "length"]
-seq = dict(zip(pr.primer.str.strip(), pr.sequence.str.strip()))
+seq = {  # primer sequences, 5'-3' (from the laboratory primer list)
+    "actB-F": "TCTGGTATGTGCAAAGCTGG", "actB-R": "CCATATCATCCCAGTTCGTGAC",
+    "rpl12-F": "ATGCCTCCTAAGTTCGATCC", "rpl12-R": "GAACAGTCACTTTGAGTCCC",
+    "srp54-F": "GTTACACAGAAATGGATCCTGT", "srp54-R": "CTCGCCTGAGATTCACAAGC",
+    "d2rF": "TCTTTCGGTGAATGACTCTG", "d2rR": "AACGCCAGTAAGACAAGAC",
+    "cry1BF": "GGTTCTATCTGCTGAAGGAG", "cry1BR": "CCAAGGTATGATACAGCAGG",
+    "mtMutSF": "TGACAGAGACAAAGTAGCTCG", "mtMutSR": "CTAGCATTAGGTTCAGAGGG",
+    "COI_smlF": "TAATTCTGCCGGGATTTGG", "COI_octoF": "CCATAACAGGACTAGCAGCATC", "COI_octoR": "ATCATAGCATAGACCATACC",
+    "sodF1": "GATGCAGAAAGGCACGTTGG", "sodR": "TGCACCACAATTGAACGACCA",
+    "catF": "GGTGAATCTGGTAGTGCTGA", "catR": "GTGATGAAGTCCCAAAACATGT",
+    "gpxF": "TTTGGTAATCAGGAACCAGAT", "gpxR": "CTTBGCAAAATTCCACTTTAT",
+    "hsp70F": "ATCATCGCGAATGACCAAGG", "hsp70R": "GCATCTGTGACCTTCTTGCC",
+    "hsp90F": "GGAAATTTTCCTCAGGGAACTC", "hsp90R": "AACCCAACACCAAATTGACC",
+}
 ew = pd.read_csv(RES / "01_expression_wells.csv").groupby("gene").E_mean.mean()
 dw = pd.read_csv(RES / "02_mtdna_wells.csv").groupby("assay").E_mean.first()
-S1 = [  # gene, function, used on, forward, reverse, efficiency, note
-    ("ACTB", "Beta-actin", "cDNA (reference); DNA (replicate run, nuclear reference)", "actB-F", "actB-R", f"{ew['ACTB']:.3f} (cDNA); 1.856 (DNA)", ""),
-    ("RPL12", "Ribosomal protein L12", "cDNA (reference)", "rpl12-F", "rpl12-R", f"{ew['RPL12']:.3f}", ""),
-    ("SRP54", "Signal recognition particle 54", "cDNA (rejected reference); DNA (nuclear reference)", "srp54-F", "srp54-R", f"{ew['SRP54']:.3f} (cDNA); {dw['SRP54']:.3f} (DNA)", "Intron-containing amplicon on genomic DNA [confirm]"),
-    ("D2R", "Dopamine receptor 2", "cDNA", "d2rF", "d2rR", f"{ew['D2R']:.3f}", ""),
-    ("CRY1", "Cryptochrome 1", "cDNA", "cry1AF or cry1BF", "cry1AR or cry1BR", f"{ew['CRY1']:.3f}", "Primer pair used (A or B) [confirm]"),
-    ("mtMutS", "Mitochondrial mismatch repair", "cDNA", "mtMutSF", "mtMutSR", f"{ew['mtMutS']:.3f}", ""),
-    ("COI", "Cytochrome c oxidase I", "cDNA", "[confirm]", "[confirm]", f"{ew['COI']:.3f}", "Primer pair used for expression [confirm]"),
-    ("SOD", "Superoxide dismutase", "cDNA", "sodF1 or sodF2", "sodR", f"{ew['SOD']:.3f}", "Forward primer used [confirm]"),
-    ("CAT", "Catalase", "cDNA", "catF", "catR", f"{ew['CAT']:.3f}", ""),
-    ("GPX", "Glutathione peroxidase", "cDNA", "gpxF", "gpxR", f"{ew['GPX']:.3f}", ""),
-    ("HSP70", "Heat-shock protein 70", "cDNA", "hsp70F", "hsp70R", f"{ew['HSP70']:.3f}", ""),
-    ("HSP90", "Heat-shock protein 90", "cDNA", "hsp90F", "hsp90R", f"{ew['HSP90']:.3f}", ""),
-    ("COI-small", "mtDNA, ~100 bp", "DNA (copy number; damage reference)", "COI_smlF", "[reverse primer missing from list]", f"{dw['COI-Sml']:.3f}", ""),
-    ("COI-large", "mtDNA, 1,124 bp (COII-igr-COI region)", "DNA (damage)", "[confirm]", "[confirm]", f"{dw['COI-Lar']:.3f}", "Possibly COI_octoF/R [confirm]"),
+D2R_NOTE = ("D2R-like: partial class A G-protein-coupled receptor (TSA IABP01020958). Its closest matches are coral genes "
+            "annotated as dopamine or octopamine receptor-like (automated predictions). No D2-type dopamine receptor has been "
+            "described in corals; the only coral dopamine receptor sequences reported are D1-like (Isomura et al. 2013).")
+COI_NOTE = "Same primer pair used for expression and COI-small amplification"
+S1 = [  # gene, product, used on, forward, reverse, amplicon (bp), efficiency, note
+    ("ACTB", "Beta-actin", "cDNA (reference); DNA (replicate run, nuclear reference)", "actB-F", "actB-R", 107, f"{ew['ACTB']:.3f} (cDNA); 1.856 (DNA)", ""),
+    ("RPL12", "Ribosomal protein L12", "cDNA (reference)", "rpl12-F", "rpl12-R", 142, f"{ew['RPL12']:.3f}", ""),
+    ("SRP54", "Signal recognition particle 54", "cDNA (rejected reference); DNA (nuclear reference)", "srp54-F", "srp54-R", 184, f"{ew['SRP54']:.3f} (cDNA); {dw['SRP54']:.3f} (DNA)", ""),
+    ("D2R", "Dopamine receptor 2-like", "cDNA", "d2rF", "d2rR", 150, f"{ew['D2R']:.3f}", D2R_NOTE),
+    ("CRY1", "Cryptochrome 1", "cDNA", "cry1BF", "cry1BR", 150, f"{ew['CRY1']:.3f}", ""),
+    ("mtMutS", "Mitochondrial MutS homologue", "cDNA", "mtMutSF", "mtMutSR", 149, f"{ew['mtMutS']:.3f}", ""),
+    ("COI", "Cytochrome c oxidase I", "cDNA", "COI_smlF", "COI_octoR", 96, f"{ew['COI']:.3f}", COI_NOTE),
+    ("SOD", "Superoxide dismutase", "cDNA", "sodF1", "sodR", 134, f"{ew['SOD']:.3f}", ""),
+    ("CAT", "Catalase", "cDNA", "catF", "catR", 209, f"{ew['CAT']:.3f}", ""),
+    ("GPX", "Glutathione peroxidase", "cDNA", "gpxF", "gpxR", 183, f"{ew['GPX']:.3f}", ""),
+    ("HSP70", "Heat-shock protein 70", "cDNA", "hsp70F", "hsp70R", 344, f"{ew['HSP70']:.3f}", ""),
+    ("HSP90", "Heat-shock protein 90", "cDNA", "hsp90F", "hsp90R", 291, f"{ew['HSP90']:.3f}", ""),
+    ("COI-small", "mtDNA, 96 bp", "DNA (copy number; damage reference)", "COI_smlF", "COI_octoR", 96, f"{dw['COI-Sml']:.3f}", COI_NOTE),
+    ("COI-large", "mtDNA, 1,124 bp (COII-igr-COI region)", "DNA (damage)", "COI_octoF", "COI_octoR", 1124, f"{dw['COI-Lar']:.3f}", ""),
 ]
-rows1 = []
-for g, fn, used, f, r, e, note in S1:
-    fs = " / ".join(seq.get(x.strip(), "") for x in f.split(" or ")) if "[" not in f else ""
-    rs = " / ".join(seq.get(x.strip(), "") for x in r.split(" or ")) if "[" not in r else ""
-    rows1.append([g, fn, used, f, fs, r, rs, "[to add]", e, note])
+rows1 = [[g, fn, used, f, seq[f], r, seq[r], bp, e, note] for g, fn, used, f, r, bp, e, note in S1]
 H1 = ["Gene / assay", "Product", "Used on", "Forward primer", "Forward sequence (5'-3')", "Reverse primer",
       "Reverse sequence (5'-3')", "Amplicon (bp)", "Efficiency (amplification factor)", "Note"]
 
@@ -75,14 +86,14 @@ def sheet(ws, caption, footer, header, rows, widths):
 ws = wb.active; ws.title = "Table S1"
 sheet(ws, "Table S1. Primers used in this study, with amplification efficiencies (LinRegPCR amplicon means for cDNA plates; "
           "LinRegPCR-style estimates from raw curves for the SRP54 and COI-small DNA plates; LinRegPCR for COI-large).",
-      "Items marked [confirm] or [to add] must be completed from laboratory records. Primers for cry2, cycle and clock appear in the "
-      "laboratory primer list but no qPCR data for these genes were found and they are not part of this study.",
+      "Amplification efficiencies were measured on the plates of this study. Values are regenerated by "
+      "scripts/06_supplementary_tables.py in Supplementary Data S1.",
       H1, rows1, [12, 26, 30, 16, 26, 18, 26, 12, 22, 34])
 ws2 = wb.create_sheet("Table S2")
 sheet(ws2, "Table S2. Exploratory mtDNA data not used in the main tests. Copy number and lesions are expressed relative to the 2014 "
            "coe.3 colonies sampled before brooding (13 July 2014; all three sites pooled). Subclades follow Taninaka et al. (2021).",
       "Subclade, site, collection year and DNA storage are confounded in these groups, so no tests were run. High apparent lesion "
-      "frequencies in archived DNA most likely reflect degradation during storage. Copy number is blank where SRP54 failed. "
+      "frequencies in archived DNA most likely reflect some degradation during storage. Copy number is blank where SRP54 failed. "
       "Values are regenerated by scripts/06_supplementary_tables.py in Supplementary Data S1.",
       H2, rows2, [34, 10, 16, 8, 14, 12, 22, 24, 40])
 out = RES / "Supplementary_Tables_S1_S2.xlsx"

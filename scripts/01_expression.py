@@ -3,7 +3,7 @@
 Inputs : data/raw/gene_expression/19032018_plate1_LinRegPCR.xls  (ACTB, RPL12, D2R, mtMutS, CRY1, COI)
          data/raw/gene_expression/19032018B_plate2_LinRegPCR.xls (SRP54, CAT, GPX, HSP70, HSP90, SOD, ACTB)
          data/metadata/samples.csv  (C1-C3 = SHC417-419, T1-T3 = SHC621-623, sex)
-Outputs: results/01_* tables (Figure 1 is drawn by 07_figures.py)
+Outputs: results/01_* tables (Figure 2 is drawn by 07_figures.py)
 
 Design: 3 colonies per group (independent colonies), technical duplicates.
 Unit of analysis = colony. Duplicates are averaged on the log2 scale BEFORE any test.
@@ -125,7 +125,7 @@ for g in TARGETS:
     pw.append(dict(gene=g, pooled_SD_log2=sd, abs_log2FC=d, n_per_group_80pct=n_needed(d, sd)))
 pd.DataFrame(pw).round(3).to_csv(RES / "01_expression_power.csv", index=False)
 
-# Figure 1 is drawn by 07_figures.py
+# Figure 2 is drawn by 07_figures.py
 
 print("STEP 1 done. Main result (Student t, df = 4; q = Benjamini-Hochberg over 9 targets):")
 print(main[main.role == "target"][["gene", "FC", "FC_CI_lo", "FC_CI_hi", "p", "q_BH"]].round(3).to_string(index=False))
