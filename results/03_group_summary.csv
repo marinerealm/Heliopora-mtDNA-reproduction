@@ -1,0 +1,16 @@
+analysis_group,site_code,lineage,repro_state,n,mtCN_fold_mean,mtCN_n,lesions_vs_B2014_before_mean,lesions_min,lesions_max
+mt1_B2014_KR,KR,B,before spawning,3,1.29,3,3.826,-1.102,11.766
+mt1_B2014_KR,KR,B,during spawning,3,0.585,3,1.211,-0.51,4.258
+mt1_B2014_YIS,YIS,B,before spawning,3,0.756,3,-2.95,-5.626,0.565
+mt1_B2014_YIS,YIS,B,during spawning,3,1.065,3,7.772,6.397,9.49
+mt1_B2014_YKS,YKS,B,before spawning,3,1.186,3,-0.876,-4.328,4.078
+mt1_B2014_YKS,YKS,B,during brooding,3,0.706,2,7.282,3.271,13.623
+mt2_Yonara2017_lineages,Yonara,A,unknown,3,1.586,3,5.617,3.269,6.929
+mt2_Yonara2017_lineages,Yonara,A',unknown,3,0.995,3,1.491,-0.077,2.361
+mt2_Yonara2017_lineages,Yonara,B,unknown,3,1.133,3,0.096,-2.171,1.871
+mt3_lineageA_2014_YKS,YKS,A,after spawning,3,3.786,3,15.779,6.171,27.886
+mt4_archived_DNA,AMM,A',unknown,3,2.768,2,10.414,7.089,14.549
+mt4_archived_DNA,KAT,A',unknown,3,,0,14.376,10.158,21.82
+mt4_archived_DNA,KUM,A,unknown,3,3.363,3,24.871,12.066,40.019
+mt4_archived_DNA,OUR,A,unknown,3,3.951,3,21.283,13.611,32.806
+mt4_archived_DNA,ZIN,A,unknown,3,1.604,3,8.107,5.765,10.366

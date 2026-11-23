@@ -1,0 +1,8 @@
+quantity,method,log2_change,fold,p_welch
+mtCN_ACTB,efficiency-corrected,0.0158,1.011,0.93
+mtCN_SRP54,efficiency-corrected,0.1149,1.0829,0.3382
+ACTB_minus_SRP54,efficiency-corrected,0.0991,1.0711,0.2454
+mtCN_ACTB,E = 2,0.0117,1.0081,0.9544
+mtCN_SRP54,E = 2,0.1137,1.082,0.4469
+ACTB_minus_SRP54,E = 2,0.102,1.0732,0.2129
+lesions_poisson_per_10kb,curves (during n = 2),0.4554,,0.9138

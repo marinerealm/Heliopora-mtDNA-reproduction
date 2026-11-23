@@ -1,0 +1,3 @@
+plate,n_wells,E_mean_estimator,E_mean_LinRegPCR,per_well_E_mean_abs_diff,Cq_constant_offset,Cq_SD_after_offset
+23032018C_COIlarge_LinRegPCR.xls,90,1.7521,1.7642,0.0168,-0.4806,0.029
+23032018B_COIsmall_firstrun_LinRegPCR.xls,86,1.8423,1.8521,0.0225,-0.5972,0.0238

@@ -1,0 +1,5 @@
+measure,range_of_group_means_log2,range_of_group_means,mean_within_group_colony_sd_log2
+Estimated mtDNA damage,1.7386333333333335,10.7 lesions per 10 kb,0.6107407590025041
+Copy number (short COI / SRP54),1.0965999999999996,2.14-fold,0.3837122077914608
+Short COI per DNA input,0.4602000000000004,1.38-fold,0.17776859531425332
+SRP54 per DNA input,0.9688333333333361,1.96-fold,0.3337637061987537

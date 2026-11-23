@@ -1,0 +1,17 @@
+,measure,sum_sq,df,F,PR(>F)
+"C(site_code, Treatment('KR'))",mtCN,0.0598,2.0,0.1267,0.8823
+"C(state2, Treatment('before'))",mtCN,0.7079,1.0,2.9984,0.1113
+"C(site_code, Treatment('KR')):C(state2, Treatment('before'))",mtCN,1.9982,2.0,4.2315,0.0434
+Residual,mtCN,2.5971,11.0,,
+"C(site_code, Treatment('KR'))",COIs_per_input,0.0421,2.0,0.5195,0.6076
+"C(state2, Treatment('before'))",COIs_per_input,0.005,1.0,0.1232,0.7317
+"C(site_code, Treatment('KR')):C(state2, Treatment('before'))",COIs_per_input,0.0288,2.0,0.3554,0.7081
+Residual,COIs_per_input,0.4858,12.0,,
+"C(site_code, Treatment('KR'))",mtCN_E2,0.0842,2.0,0.1299,0.8796
+"C(state2, Treatment('before'))",mtCN_E2,0.9713,1.0,2.9958,0.1114
+"C(site_code, Treatment('KR')):C(state2, Treatment('before'))",mtCN_E2,2.7424,2.0,4.2295,0.0434
+Residual,mtCN_E2,3.5662,11.0,,
+"C(site_code, Treatment('KR'))",lesions_poisson,150.2302,2.0,3.819,0.0521
+"C(state2, Treatment('before'))",lesions_poisson,132.2734,1.0,6.7251,0.0235
+"C(site_code, Treatment('KR')):C(state2, Treatment('before'))",lesions_poisson,150.2302,2.0,3.819,0.0521
+Residual,lesions_poisson,236.025,12.0,,

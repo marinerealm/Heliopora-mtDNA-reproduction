@@ -1,0 +1,4 @@
+,geNorm_M,raw_log2_T_minus_C,raw_p_welch,amplicon_efficiency,median_duplicate_dCq,decision
+ACTB,0.333,0.055,0.918,1.915,0.127,use (both plates averaged)
+RPL12,0.327,0.166,0.744,1.963,0.056,use
+SRP54,0.44,0.55,0.443,1.764,0.464,"reject: low efficiency, late Cq, noisy duplicates, drifts vs ACTB/RPL12"

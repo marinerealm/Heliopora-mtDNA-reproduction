@@ -1,0 +1,50 @@
+analysis,contrast,measure,n,diff,CI_lo,CI_hi,p,df
+B2014 reproductive vs before,KR,mtCN,3 v 3,-1.0966,-2.4679,0.2747,0.0897,3.8377
+B2014 reproductive vs before,YIS,mtCN,3 v 3,0.487,-0.3054,1.2794,0.1618,3.9091
+B2014 reproductive vs before,YKS,mtCN,3 v 2,-0.6749,-1.9212,0.5714,0.1714,2.6351
+B2014 reproductive vs before,KR,COIs_per_input,3 v 3,-0.1278,-0.9165,0.661,0.5748,2.131
+B2014 reproductive vs before,YIS,COIs_per_input,3 v 3,0.0678,-0.4201,0.5556,0.7061,3.4805
+B2014 reproductive vs before,YKS,COIs_per_input,3 v 3,-0.0399,-0.3904,0.3107,0.7672,3.96
+B2014 reproductive vs before,KR,mtCN_E2,3 v 3,-1.2851,-2.8933,0.3231,0.0898,3.818
+B2014 reproductive vs before,YIS,mtCN_E2,3 v 3,0.5704,-0.3548,1.4956,0.1606,3.8953
+B2014 reproductive vs before,YKS,mtCN_E2,3 v 2,-0.7898,-2.2615,0.682,0.1737,2.6246
+B2014 reproductive vs before,KR,lesions_poisson,3 v 3,-2.6143,-17.6571,12.4284,0.5918,2.5691
+B2014 reproductive vs before,YIS,lesions_poisson,3 v 3,10.7218,4.1076,17.3361,0.0144,2.9259
+B2014 reproductive vs before,YKS,lesions_poisson,3 v 3,8.1574,-3.441,19.7559,0.1206,3.8007
+B2014 reproductive vs before,KR,lesions_rothfuss,3 v 3,-1.735,-14.4165,10.9464,0.6954,3.064
+B2014 reproductive vs before,YIS,lesions_rothfuss,3 v 3,6.5695,-0.7692,13.9081,0.0617,2.0919
+B2014 reproductive vs before,YKS,lesions_rothfuss,3 v 3,5.5994,-2.9302,14.1289,0.1261,2.9017
+B2014 reproductive vs before,KR,lesions_poisson_E2,3 v 3,-3.1381,-21.6439,15.3677,0.598,2.5388
+B2014 reproductive vs before,YIS,lesions_poisson_E2,3 v 3,13.0625,4.823,21.302,0.0153,2.9273
+B2014 reproductive vs before,YKS,lesions_poisson_E2,3 v 3,9.9769,-4.1128,24.0667,0.1191,3.828
+B2014 KR vs YIS difference in change,YIS change - KR change,mtCN,3/3/3/3,1.5836,0.2875,2.8796,0.0226,8.0
+B2014 baseline sites (13 Jul),KR = YIS = YKS,mtCN,3/3/3,,,,0.3037,
+B2014 KR vs YIS difference in change,YIS change - KR change,COIs_per_input,3/3/3/3,0.1955,-0.3931,0.7841,0.4657,8.0
+B2014 baseline sites (13 Jul),KR = YIS = YKS,COIs_per_input,3/3/3,,,,0.3523,
+B2014 KR vs YIS difference in change,YIS change - KR change,mtCN_E2,3/3/3/3,1.8555,0.3402,3.3707,0.0224,8.0
+B2014 baseline sites (13 Jul),KR = YIS = YKS,mtCN_E2,3/3/3,,,,0.3074,
+B2014 KR vs YIS difference in change,YIS change - KR change,lesions_poisson,3/3/3/3,13.3362,2.374,24.2983,0.023,8.0
+Yonara 2017 lineages,A = A' = B (one-way ANOVA),mtCN,3/3/3,,,,0.1222,6.0
+Yonara 2017 lineages (Tukey HSD),A - B,mtCN,3 v 3,0.4477,-0.4107,1.306,0.3158,
+Yonara 2017 lineages (Tukey HSD),A' - B,mtCN,3 v 3,-0.2314,-1.0897,0.627,0.7014,
+Yonara 2017 lineages (Tukey HSD),A - A',mtCN,3 v 3,0.6791,-0.1793,1.5374,0.112,
+Yonara 2017 lineages,A = A' = B (one-way ANOVA),COIs_per_input,3/3/3,,,,0.0271,6.0
+Yonara 2017 lineages (Tukey HSD),A - B,COIs_per_input,3 v 3,-0.485,-1.1446,0.1746,0.1393,
+Yonara 2017 lineages (Tukey HSD),A' - B,COIs_per_input,3 v 3,-0.7976,-1.4572,-0.1381,0.0232,
+Yonara 2017 lineages (Tukey HSD),A - A',COIs_per_input,3 v 3,0.3126,-0.3469,0.9722,0.3747,
+Yonara 2017 lineages,A = A' = B (one-way ANOVA),mtCN_E2,3/3/3,,,,0.1219,6.0
+Yonara 2017 lineages (Tukey HSD),A - B,mtCN_E2,3 v 3,0.5364,-0.4663,1.5391,0.3007,
+Yonara 2017 lineages (Tukey HSD),A' - B,mtCN_E2,3 v 3,-0.2543,-1.257,0.7485,0.7291,
+Yonara 2017 lineages (Tukey HSD),A - A',mtCN_E2,3 v 3,0.7907,-0.212,1.7934,0.1131,
+Yonara 2017 lineages,A = A' = B (one-way ANOVA),lesions_poisson,3/3/3,,,,0.0253,6.0
+Yonara 2017 lineages (Tukey HSD),A - B,lesions_poisson,3 v 3,5.5211,0.8859,10.1563,0.0248,
+Yonara 2017 lineages (Tukey HSD),A' - B,lesions_poisson,3 v 3,1.3947,-3.2405,6.0298,0.6468,
+Yonara 2017 lineages (Tukey HSD),A - A',lesions_poisson,3 v 3,4.1265,-0.5087,8.7616,0.0761,
+Yonara 2017 lineages,A = A' = B (one-way ANOVA),lesions_rothfuss,3/3/3,,,,0.0453,6.0
+Yonara 2017 lineages (Tukey HSD),A - B,lesions_rothfuss,3 v 3,4.1906,0.2108,8.1705,0.041,
+Yonara 2017 lineages (Tukey HSD),A' - B,lesions_rothfuss,3 v 3,1.3944,-2.5854,5.3742,0.5619,
+Yonara 2017 lineages (Tukey HSD),A - A',lesions_rothfuss,3 v 3,2.7962,-1.1836,6.776,0.1584,
+Yonara 2017 lineages,A = A' = B (one-way ANOVA),lesions_poisson_E2,3/3/3,,,,0.0214,6.0
+Yonara 2017 lineages (Tukey HSD),A - B,lesions_poisson_E2,3 v 3,6.946,1.4031,12.4889,0.0199,
+Yonara 2017 lineages (Tukey HSD),A' - B,lesions_poisson_E2,3 v 3,2.0397,-3.5032,7.5826,0.5327,
+Yonara 2017 lineages (Tukey HSD),A - A',lesions_poisson_E2,3 v 3,4.9063,-0.6366,10.4492,0.0776,
